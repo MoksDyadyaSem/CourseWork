@@ -36,11 +36,6 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="newWorkerSignUp" contentDisplay="CENTER" layoutX="35.0" layoutY="392.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="185.0" style="-fx-background-color: #77DD77;" text="Зарегистрировать&#10; сотрудника" textFill="WHITE">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
             <Button fx:id="SignOut_button" layoutX="33.0" layoutY="541.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="185.0" style="-fx-background-color: #BA274A;" text="Выход из аккаунта" textFill="WHITE">
                <font>
                   <Font size="13.0" />

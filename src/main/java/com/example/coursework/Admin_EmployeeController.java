@@ -77,6 +77,20 @@ public class Admin_EmployeeController {
         employeeTable.setItems(data);
     }
     public void initialize() {
+        createPartsLists.setOnAction(actionEvent -> {
+            try {
+                // Загружаем новую сцену
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-detali.fxml"));
+                Parent root = loader.load();
+
+                // Получаем текущее окно и устанавливаем новую сцену
+                Stage currentStage = (Stage) addEmployeeButton.getScene().getWindow();
+                currentStage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Обработка ошибки загрузки FXML-файла
+            }
+        });
 
         System.out.println("Controller initialized");
         if (employeeTable == null) {

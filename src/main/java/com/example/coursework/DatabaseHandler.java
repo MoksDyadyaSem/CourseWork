@@ -116,6 +116,76 @@ public class DatabaseHandler {
 
         return data;
     }
+    public static ObservableList<Detail> loadDetailsFromDatabase() {
+        ObservableList<Detail> data = FXCollections.observableArrayList();
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM details")) {
+
+            while (resultSet.next()) {
+                Detail detail = new Detail(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getDouble("price"),
+                        resultSet.getDouble("weight"),
+                        resultSet.getString("dimension"),
+                        resultSet.getString("material")
+                );
+                data.add(detail);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return data;
+    }
+    public static void addDetail(String name, String price, String weight, String dimension, String material) throws Exception {
+        String query = "INSERT INTO details (name, price, weight, dimension, material) VALUES (?, ?, ?, ?, ?)";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, name);
+            statement.setDouble(2, Double.parseDouble(price));
+            statement.setDouble(3, Double.parseDouble(weight));
+            statement.setString(4, dimension);
+            statement.setString(5, material);
+
+            statement.executeUpdate();
+        }
+    }
+    public static void deleteDetailById(int id) throws Exception {
+        String query = "DELETE FROM details WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
+    }
+
+    public static Detail getDetailById(int id) throws Exception {
+        String query = "SELECT * FROM details WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return new Detail(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getDouble("price"),
+                        resultSet.getDouble("weight"),
+                        resultSet.getString("dimension"),
+                        resultSet.getString("material")
+                );
+            }
+        }
+        return null;
+    }
 
     public void close() {
         try {

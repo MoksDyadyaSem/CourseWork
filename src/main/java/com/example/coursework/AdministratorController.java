@@ -26,20 +26,33 @@ public class AdministratorController {
     @FXML
     private Button createWorkersList;
 
-    @FXML
-    private Button newWorkerSignUp;
+
 
 
     @FXML
     private void initialize() {
-        newWorkerSignUp.setOnAction(actionEvent -> {
+        createWorkersList.setOnAction(actionEvent -> {
             try {
                 // Загружаем новую сцену
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("adminSignUp_new.fxml"));
                 Parent root = loader.load();
 
                 // Получаем текущее окно и устанавливаем новую сцену
-                Stage currentStage = (Stage) newWorkerSignUp.getScene().getWindow();
+                Stage currentStage = (Stage) createWorkersList.getScene().getWindow();
+                currentStage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Обработка ошибки загрузки FXML-файла
+            }
+        });
+        createPartsLists.setOnAction(actionEvent -> {
+            try {
+                // Загружаем новую сцену
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-detali.fxml"));
+                Parent root = loader.load();
+
+                // Получаем текущее окно и устанавливаем новую сцену
+                Stage currentStage = (Stage) createPartsLists.getScene().getWindow();
                 currentStage.setScene(new Scene(root));
             } catch (IOException e) {
                 e.printStackTrace();
