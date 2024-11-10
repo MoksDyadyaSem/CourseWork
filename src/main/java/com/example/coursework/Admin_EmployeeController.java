@@ -81,6 +81,21 @@ public class Admin_EmployeeController {
             try {
                 // Загружаем новую сцену
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-detali.fxml"));
+                System.out.println("Loading FXML file: " + loader.getLocation());
+                Parent root = loader.load();
+
+                // Получаем текущее окно и устанавливаем новую сцену
+                Stage currentStage = (Stage) createPartsLists.getScene().getWindow();
+                currentStage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Обработка ошибки загрузки FXML-файла
+            }
+        });
+        createProductList.setOnAction(actionEvent -> {
+            try {
+                // Загружаем новую сцену
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-products.fxml"));
                 Parent root = loader.load();
 
                 // Получаем текущее окно и устанавливаем новую сцену

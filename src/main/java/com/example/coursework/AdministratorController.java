@@ -59,6 +59,20 @@ public class AdministratorController {
                 // Обработка ошибки загрузки FXML-файла
             }
         });
+        createProductList.setOnAction(actionEvent -> {
+            try {
+                // Загружаем новую сцену
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-products.fxml"));
+                Parent root = loader.load();
+
+                // Получаем текущее окно и устанавливаем новую сцену
+                Stage currentStage = (Stage) createProductList.getScene().getWindow();
+                currentStage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Обработка ошибки загрузки FXML-файла
+            }
+        });
 
         SignOut_button.setOnAction(actionEvent -> {
             try {

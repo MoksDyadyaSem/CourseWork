@@ -187,6 +187,55 @@ public class DatabaseHandler {
         return null;
     }
 
+    public static void addProduct(String name, String description, String weight, String dimension,  String material) throws Exception {
+        String query = "INSERT INTO product (name, description, weight, dimension, material) VALUES (?, ?, ?, ?, ?)";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, name);
+            statement.setString(2, description);
+            statement.setDouble(3, Double.parseDouble(weight));
+            statement.setString(4, dimension);
+            statement.setString(5, material);
+
+            statement.executeUpdate();
+        }
+    }
+    public static void deleteProductById(int id) throws Exception {
+        String query = "DELETE FROM product WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
+    }
+    public static ObservableList<Product> loadProductFromDatabase() {
+        ObservableList<Product> data = FXCollections.observableArrayList();
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM product")) { // Исправлено на "product"
+
+            while (resultSet.next()) {
+                Product product = new Product(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("description"),
+                        resultSet.getDouble("weight"),
+                        resultSet.getString("dimension"),
+                        resultSet.getString("material")
+                );
+                data.add(product);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return data;
+    }
+
     public void close() {
         try {
             if (connection != null) {

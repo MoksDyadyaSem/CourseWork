@@ -4,11 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.application.Application;
-import javafx.stage.Stage;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.util.Enumeration;
 import java.io.IOException;
 
 public class ZavodApplication extends Application {
