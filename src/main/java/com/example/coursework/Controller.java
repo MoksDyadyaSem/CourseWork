@@ -47,7 +47,7 @@ public class Controller {
                         String fxmlFile;
                         switch (profession) {
                             case "Администратор":
-                                fxmlFile = "administrator-window.fxml";
+                                fxmlFile = "admin-window.fxml";
                                 break;
                             case "Инженер":
                                 fxmlFile = "engineer-window.fxml";

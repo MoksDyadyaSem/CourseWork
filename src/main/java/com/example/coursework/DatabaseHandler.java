@@ -1,5 +1,8 @@
 package com.example.coursework;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 
 public class DatabaseHandler {
@@ -59,21 +62,59 @@ public class DatabaseHandler {
         }
     }
 
+    public static void addEmployee(String name, String surname, String login, String password, String profession) throws Exception {
+        String query = "INSERT INTO employees (name, surname, login, password, profession) VALUES (?, ?, ?, ?, ?)";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
-    public boolean addEmployee(String login, String name, String surname, String password, String profession) {
-        String query = "INSERT INTO employees (login, name, surname, password, profession) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, login);
-            statement.setString(2, name);
-            statement.setString(3, surname);
+            statement.setString(1, name);
+            statement.setString(2, surname);
+            statement.setString(3, login);
             statement.setString(4, password);
             statement.setString(5, profession);
+
             statement.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
         }
+    }
+    public static ResultSet executeQuery(String query) throws Exception {
+        try (Connection connection = getConnection();
+             Statement statement = connection.createStatement()) {
+            return statement.executeQuery(query);
+        }
+    }
+    public static void deleteEmployeeById(int id) throws Exception {
+        String query = "DELETE FROM employees WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
+    }
+    public static ObservableList<Employee> loadEmployeesFromDatabase() {
+        ObservableList<Employee> data = FXCollections.observableArrayList();
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM employees")) {
+
+            while (resultSet.next()) {
+                Employee employee = new Employee(
+                        resultSet.getInt("id"),
+                        resultSet.getString("profession"),
+                        resultSet.getString("name"),
+                        resultSet.getString("surname"),
+                        resultSet.getString("login"),
+                        resultSet.getString("password")
+                );
+                data.add(employee);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return data;
     }
 
     public void close() {

@@ -35,7 +35,7 @@ public class AdministratorController {
         newWorkerSignUp.setOnAction(actionEvent -> {
             try {
                 // Загружаем новую сцену
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("administratorSignUp_Bridge.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("adminSignUp_new.fxml"));
                 Parent root = loader.load();
 
                 // Получаем текущее окно и устанавливаем новую сцену
@@ -46,6 +46,7 @@ public class AdministratorController {
                 // Обработка ошибки загрузки FXML-файла
             }
         });
+
         SignOut_button.setOnAction(actionEvent -> {
             try {
                 // Загружаем новую сцену
