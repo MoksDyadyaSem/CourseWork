@@ -18,6 +18,13 @@ public class Product {
         this.material = material;
     }
 
+    public Product(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    public Product(int id) {
+        this.id = id;
+    }
     // Геттеры и сеттеры для всех полей
 
     public int getId() {

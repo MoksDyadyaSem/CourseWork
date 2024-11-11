@@ -17,7 +17,15 @@ public class Detail {
         this.material = material;
     }
 
-    // Геттеры и сеттеры для всех полей
+    public Detail(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Detail(int id) {
+        this.id = id;
+    }
+// Геттеры и сеттеры для всех полей
 
     public int getId() {
         return id;

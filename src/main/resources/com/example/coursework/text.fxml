@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="com.example.EngineerController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="10" vgap="10">
+    <Label text="Продукты" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+    <TableView fx:id="productTable" GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <columns>
+            <TableColumn text="ID" fx:id="productIdColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Name" fx:id="productNameColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name" />
+                </cellValueFactory>
+            </TableColumn>
+            <!-- Добавьте другие столбцы по необходимости -->
+        </columns>
+    </TableView>
+
+    <Label text="Детали" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+    <TableView fx:id="detailTable" GridPane.rowIndex="1" GridPane.columnIndex="1">
+        <columns>
+            <TableColumn text="ID" fx:id="detailIdColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Name" fx:id="detailNameColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name" />
+                </cellValueFactory>
+            </TableColumn>
+            <!-- Добавьте другие столбцы по необходимости -->
+        </columns>
+    </TableView>
+
+    <Label text="Детали для продукта" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2" />
+    <TableView fx:id="productDetailTable" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <columns>
+            <TableColumn text="Product ID" fx:id="productDetailProductIdColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="product.id" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Detail ID" fx:id="productDetailDetailIdColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="detail.id" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Quantity" fx:id="productDetailQuantityColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="quantity" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <Label text="Добавить деталь" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+    <ComboBox fx:id="productComboBox" promptText="Выберите продукт" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+    <ComboBox fx:id="detailComboBox" promptText="Выберите деталь" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+    <TextField fx:id="quantityTextField" promptText="Количество" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+    <Button text="Добавить" onAction="#addDetailToProduct" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+
+    <Label text="Обновить количество" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+    <ComboBox fx:id="updateProductComboBox" promptText="Выберите продукт" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+    <ComboBox fx:id="updateDetailComboBox" promptText="Выберите деталь" GridPane.rowIndex="8" GridPane.columnIndex="1" />
+    <TextField fx:id="updateQuantityTextField" promptText="Новое количество" GridPane.rowIndex="9" GridPane.columnIndex="0" />
+    <Button text="Обновить" onAction="#updateDetailQuantity" GridPane.rowIndex="9" GridPane.columnIndex="1" />
+
+    <Button text="Удалить деталь" onAction="#removeDetailFromProduct" GridPane.rowIndex="10" GridPane.columnIndex="0" GridPane.columnSpan="2" />
+</GridPane>
