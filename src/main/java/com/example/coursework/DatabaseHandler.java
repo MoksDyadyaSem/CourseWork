@@ -28,20 +28,8 @@ public class DatabaseHandler {
             System.out.println("Ошибка подключения к базе данных: " + e.getMessage());
         }
     }
-    public static void openConnection() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection("jdbc:postgresql://<host>/<database>", "<username>", "<password>");
-        }
-    }
-
-    public static void closeConnection() throws SQLException {
-        if (connection != null && !connection.isClosed()) {
-            connection.close();
-        }
-    }
-
-    public static Connection getConnection() {
-        return connection;
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
     }
 
     public String checkLogin(String login, String password) {
@@ -84,13 +72,6 @@ public class DatabaseHandler {
         }
     }
 
-    public static ResultSet executeQuery(String query) throws Exception {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             Statement statement = connection.createStatement()) {
-            return statement.executeQuery(query);
-        }
-    }
-
     public static void deleteEmployeeById(int id) throws Exception {
         String query = "DELETE FROM employees WHERE id = ?";
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -103,7 +84,6 @@ public class DatabaseHandler {
 
     public static ObservableList<Employee> loadEmployeesFromDatabase() {
         ObservableList<Employee> data = FXCollections.observableArrayList();
-
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery("SELECT * FROM employees")) {
