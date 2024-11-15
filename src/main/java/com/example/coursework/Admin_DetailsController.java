@@ -75,14 +75,7 @@ public class Admin_DetailsController {
     @FXML
     private TextField weightField;
 
-    @FXML
-    private TextField idToAdd;
 
-    @FXML
-    private Button addToListButton;
-
-    @FXML
-    private ListView<String> detailListView;
 
     private ObservableList<String> selectedDetails = FXCollections.observableArrayList();
 
@@ -217,29 +210,6 @@ public class Admin_DetailsController {
             } catch (IOException e) {
                 e.printStackTrace();
                 // Обработка ошибки загрузки FXML-файла
-            }
-        });
-
-        addToListButton.setOnAction(event -> {
-            String idStr = idToAdd.getText();
-            if (idStr.isEmpty()) {
-                System.out.println("Поле ID не может быть пустым");
-                return;
-            }
-
-            try {
-                int id = Integer.parseInt(idStr);
-                Detail detail = DatabaseHandler.getDetailById(id);
-                if (detail != null) {
-                    selectedDetails.add(detail.toString()); // Добавляем строку, возвращаемую методом toString()
-                    detailListView.setItems(selectedDetails);
-                } else {
-                    System.out.println("Деталь с ID " + id + " не найдена");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("ID должен быть числом");
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         });
     }

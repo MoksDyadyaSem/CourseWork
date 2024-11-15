@@ -16,7 +16,7 @@
                         <Image url="@../../../assets/gradient.jpg" />
                     </image>
                 </ImageView>
-                <Label layoutX="34.0" prefHeight="95.0" prefWidth="207.0" text="Добро пожаловать,&#10;администратор&#10;">
+                <Label layoutX="34.0" prefHeight="95.0" prefWidth="207.0" text="Добро пожаловать,&#10;инженер&#10;">
                     <font>
                         <Font size="18.0" />
                     </font>
