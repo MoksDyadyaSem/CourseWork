@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #4B644A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursework.Worker_SborkaController">
+    <children>
+        <AnchorPane layoutX="-4.0" layoutY="81.0" prefHeight="619.0" prefWidth="1009.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <ImageView fitHeight="619.0" fitWidth="245.0" layoutX="5.0">
+                    <image>
+                        <Image url="@../../../assets/gradient.jpg" />
+                    </image>
+                </ImageView>
+                <Label layoutX="34.0" prefHeight="95.0" prefWidth="207.0" text="Добро пожаловать,&#10;рабочий&#10;">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="SborkaButton" layoutX="17.0" layoutY="218.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="217.0" style="-fx-background-color: #77DD77;" text="Установка деталей в изделие" textFill="WHITE">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Button>
+                <Button fx:id="SignOut_button" layoutX="33.0" layoutY="541.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="185.0" style="-fx-background-color: #BA274A;" text="Выход из аккаунта" textFill="WHITE">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Button>
+            <TableView fx:id="product_detailsTable" layoutX="273.0" layoutY="48.0" prefHeight="230.0" prefWidth="232.0">
+              <columns>
+                <TableColumn fx:id="productDetailProductIdColumn" prefWidth="75.0" text="product_id" />
+                <TableColumn fx:id="productDetailDetailIdColumn" prefWidth="75.0" text="detail_id" />
+                  <TableColumn fx:id="productDetailQuantityColumn" prefWidth="81.0" text="quantity" />
+              </columns>
+            </TableView>
+            <Text fx:id="text1" layoutX="273.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Детали для продукта &#10;и их последовательность сборки" />
+            <TextField fx:id="detail_idField" layoutX="273.0" layoutY="326.0" promptText="Введите айди детали" />
+            <ComboBox fx:id="productComboBox" layoutX="273.0" layoutY="297.0" prefHeight="25.0" prefWidth="232.0" promptText="Выберите продукт для сборки" />
+            <Button fx:id="VstavitButton" layoutX="273.0" layoutY="362.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="217.0" style="-fx-background-color: #77DD77;" text="Вставить деталь" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="IzyatButton" layoutX="271.0" layoutY="424.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="217.0" style="-fx-background-color: #BA274A;" text="Изьять деталь" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TableView fx:id="temporaryWorkerTable" layoutX="566.0" layoutY="78.0" prefHeight="230.0" prefWidth="409.0">
+               <columns>
+                  <TableColumn fx:id="tempProductIdColumn" prefWidth="121.0" text="product_id" />
+                  <TableColumn fx:id="tempDetailIdColumn" prefWidth="141.0" text="details_id_in" />
+                  <TableColumn fx:id="tempQuantityColumn" prefWidth="146.0" text="quantity" />
+               </columns>
+            </TableView>
+            <Text fx:id="text11" layoutX="566.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Временная таблица, видна только вам.&#10;В ней вы можете отслеживать процесс своей сборки.&#10;Когда вы полностью закончите сборку &#10;изделия нажмите кнопку &quot;Закончить сборку&quot;" />
+            <Button fx:id="EndCreateButton" layoutX="758.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="217.0" style="-fx-background-color: #77DD77;" text="Закончить сборку" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TableView fx:id="readyProductTable" layoutX="566.0" layoutY="371.0" prefHeight="230.0" prefWidth="409.0">
+               <columns>
+                  <TableColumn fx:id="productNumber_Column" prefWidth="121.0" text="product_number" />
+                  <TableColumn fx:id="product_idColumn" prefWidth="141.0" text="product_id" />
+                  <TableColumn fx:id="any_DefectsColumn" prefWidth="146.0" text="any_defects" />
+               </columns>
+            </TableView>
+            </children>
+        </AnchorPane>
+        <Label layoutX="372.0" layoutY="22.0" prefHeight="40.0" prefWidth="257.0" text="Добро пожаловать на завод!" textFill="WHITE">
+            <font>
+                <Font name="Arial Italic" size="18.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

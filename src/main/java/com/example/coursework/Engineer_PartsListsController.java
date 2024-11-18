@@ -3,9 +3,15 @@ package com.example.coursework;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
+
+import java.io.IOException;
 
 public class Engineer_PartsListsController {
     @FXML
@@ -57,6 +63,15 @@ public class Engineer_PartsListsController {
     @FXML
     private Button removeDetailFromProduct;
 
+    @FXML
+    private Button SignOut_button;
+
+    @FXML
+    private Button trackingAssemblyButton;
+
+    @FXML
+    private Button goodOrTrashButton;
+
     private ObservableList<Product> products;
     private ObservableList<Detail> details;
 
@@ -99,6 +114,48 @@ public class Engineer_PartsListsController {
         refreshProductTable();
         refreshDetailsTable();
         refreshProductDetailTable();
+        SignOut_button.setOnAction(actionEvent -> {
+            try {
+                // Загружаем новую сцену
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+                Parent root = loader.load();
+
+                // Получаем текущее окно и устанавливаем новую сцену
+                Stage currentStage = (Stage) SignOut_button.getScene().getWindow();
+                currentStage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Обработка ошибки загрузки FXML-файла
+            }
+        });
+        goodOrTrashButton.setOnAction(actionEvent -> {
+            try {
+                // Загружаем новую сцену
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("engineer-readyProducts.fxml"));
+                Parent root = loader.load();
+
+                // Получаем текущее окно и устанавливаем новую сцену
+                Stage currentStage = (Stage) goodOrTrashButton.getScene().getWindow();
+                currentStage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Обработка ошибки загрузки FXML-файла
+            }
+        });
+        trackingAssemblyButton.setOnAction(actionEvent -> {
+            try {
+                // Загружаем новую сцену
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("engineer-trackWorker.fxml"));
+                Parent root = loader.load();
+
+                // Получаем текущее окно и устанавливаем новую сцену
+                Stage currentStage = (Stage) trackingAssemblyButton.getScene().getWindow();
+                currentStage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Обработка ошибки загрузки FXML-файла
+            }
+        });
     }
 
     private <T> void configureComboBoxDisplay(ComboBox<T> comboBox) {

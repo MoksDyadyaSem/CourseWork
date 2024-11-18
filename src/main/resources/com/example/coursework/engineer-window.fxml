@@ -26,12 +26,7 @@
                         <Font size="13.0" />
                     </font>
                 </Button>
-                <Button fx:id="createSequencyButton" layoutX="16.0" layoutY="254.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="217.0" style="-fx-background-color: #77DD77;" text="Определить последовательность&#10; сборки изделия" textFill="WHITE">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Button>
-                <Button fx:id="trackingAssemblyButton" layoutX="14.0" layoutY="325.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="217.0" style="-fx-background-color: #77DD77;" text="Слежение за процессом сборки" textFill="WHITE">
+                <Button fx:id="trackingAssemblyButton" layoutX="16.0" layoutY="254.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="217.0" style="-fx-background-color: #77DD77;" text="Слежение за процессом сборки" textFill="WHITE">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -47,7 +42,7 @@
                         <Image url="@../../../assets/Wirenboard RGB 92-179-0.png" />
                     </image>
                 </ImageView>
-            <Button fx:id="goodOrTrashButton" layoutX="14.0" layoutY="386.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="217.0" style="-fx-background-color: #77DD77;" text="Прием готовых изделий" textFill="WHITE">
+            <Button fx:id="goodOrTrashButton" layoutX="16.0" layoutY="325.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="217.0" style="-fx-background-color: #77DD77;" text="Прием готовых изделий" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>

@@ -53,7 +53,7 @@ public class Controller {
                                 fxmlFile = "engineer-window.fxml";
                                 break;
                             case "Рабочий":
-                                fxmlFile = "worker-window.fxml";
+                                fxmlFile = "worker-sborka.fxml";
                                 break;
                             default:
                                 showAlert("Ошибка", "Неверный логин или пароль");
